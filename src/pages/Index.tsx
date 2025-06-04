@@ -6,9 +6,6 @@ import PaymentForm from "@/components/PaymentForm";
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <HeroSection />
-      <PricingSection />
-      <FeaturesSection />
       <PaymentForm />
     </div>
   );
