@@ -11,118 +11,87 @@ import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 
 const PricingSection = () => {
-  const plans = [
-    {
-      name: "Базовый",
-      price: "990",
-      period: "месяц",
-      description: "Идеально для небольшой квартиры",
-      features: [
-        "До 10 устройств",
-        "5 локаций серверов",
-        "Базовая поддержка",
-        "Скорость до 100 Мбит/с",
-      ],
-      popular: false,
-    },
-    {
-      name: "Семейный",
-      price: "1590",
-      period: "месяц",
-      description: "Лучший выбор для семьи",
-      features: [
-        "Безлимитное количество устройств",
-        "30+ локаций серверов",
-        "Приоритетная поддержка",
-        "Скорость до 500 Мбит/с",
-        "Родительский контроль",
-        "Блокировка рекламы",
-      ],
-      popular: true,
-    },
-    {
-      name: "Премиум",
-      price: "2490",
-      period: "месяц",
-      description: "Для максимальной производительности",
-      features: [
-        "Безлимитное количество устройств",
-        "50+ локаций серверов",
-        "VIP поддержка 24/7",
-        "Скорость до 1 Гбит/с",
-        "Выделенный IP",
-        "Двойное шифрование",
-        "Защита от DDoS",
-      ],
-      popular: false,
-    },
-  ];
-
   return (
-    <section className="py-24 bg-gray-50">
+    <section id="pricing" className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Выберите ваш тариф
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-base font-semibold leading-7 text-blue-600">
+            Простая цена
           </h2>
-          <p className="mt-4 text-lg text-gray-600">
-            Все тарифы включают настройку роутера и техническую поддержку
+          <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            VPN подписка
+          </p>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            Защитите свое интернет-соединение с помощью надежного VPN сервиса
           </p>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {plans.map((plan) => (
-            <Card
-              key={plan.name}
-              className={`relative transition-all duration-300 hover:shadow-lg ${plan.popular ? "ring-2 ring-purple-500 scale-105" : ""}`}
-            >
-              {plan.popular && (
-                <Badge className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-500">
-                  Популярный
-                </Badge>
-              )}
+        <div className="mx-auto mt-16 max-w-lg">
+          <Card className="relative overflow-hidden border-2 border-blue-200 shadow-xl">
+            <div className="absolute top-0 right-0 -mr-1 -mt-1">
+              <Badge className="bg-blue-600 text-white px-4 py-1 rounded-bl-lg rounded-tr-lg">
+                Популярный выбор
+              </Badge>
+            </div>
 
-              <CardHeader className="text-center">
-                <CardTitle className="text-xl">{plan.name}</CardTitle>
-                <CardDescription>{plan.description}</CardDescription>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-gray-600"> ₽/{plan.period}</span>
-                </div>
-              </CardHeader>
+            <CardHeader className="text-center pb-8">
+              <CardTitle className="text-2xl font-bold text-gray-900">
+                VPN Защита
+              </CardTitle>
+              <CardDescription className="text-gray-600 mt-2">
+                Полная защита на 30 дней
+              </CardDescription>
+              <div className="mt-6">
+                <span className="text-5xl font-bold text-gray-900">300</span>
+                <span className="text-xl font-medium text-gray-500 ml-2">
+                  ₽
+                </span>
+                <div className="text-sm text-gray-500 mt-1">за 30 дней</div>
+              </div>
+            </CardHeader>
 
-              <CardContent>
-                <ul className="space-y-3">
-                  {plan.features.map((feature, index) => (
-                    <li key={index} className="flex items-center">
-                      <Icon
-                        name="Check"
-                        size={20}
-                        className="text-green-500 mr-3 flex-shrink-0"
-                      />
-                      <span className="text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
+            <CardContent className="px-8">
+              <ul className="space-y-4">
+                {[
+                  "Безлимитное количество устройств",
+                  "30+ серверов по всему миру",
+                  "Скорость до 500 Мбит/с",
+                  "Круглосуточная поддержка",
+                  "Блокировка рекламы",
+                  "Защита от вирусов",
+                  "Без логов активности",
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-start">
+                    <Icon
+                      name="Check"
+                      size={20}
+                      className="text-green-500 mr-3 mt-0.5 flex-shrink-0"
+                    />
+                    <span className="text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
 
-              <CardFooter>
-                <Button
-                  className={`w-full ${plan.popular ? "bg-purple-600 hover:bg-purple-700" : ""}`}
-                  variant={plan.popular ? "default" : "outline"}
-                >
-                  <Icon name="CreditCard" size={16} className="mr-2" />
-                  Оплатить {plan.name}
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
+            <CardFooter className="pt-8 px-8 pb-8">
+              <Button
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg font-medium"
+                onClick={() => {
+                  document
+                    .getElementById("payment")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
+                <Icon name="Shield" size={20} className="mr-2" />
+                Оформить подписку
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
 
-        <div className="mt-12 text-center">
-          <p className="text-sm text-gray-600">
-            <Icon name="Shield" size={16} className="inline mr-1" />
-            30 дней гарантии возврата средств
+        <div className="text-center mt-8">
+          <p className="text-sm text-gray-500">
+            30-дневная гарантия возврата денег • Отменить можно в любое время
           </p>
         </div>
       </div>
